@@ -44,9 +44,9 @@ Meng Wang, [Peize Sun](https://peizesun.github.io/),
 [[`Project`](https://ai.meta.com/sam3)]
 [[`Demo`](https://segment-anything.com/)]
 [[`Blog`](https://ai.meta.com/blog/segment-anything-model-3/)]
-<!-- [[`BibTeX`](#citing-sam-3)] -->
+[[`BibTeX`](#citing-sam-3)]
 
-![SAM 3 architecture](assets/model_diagram.png?raw=true) SAM 3 is a unified foundation model for promptable segmentation in images and videos. It can detect, segment, and track objects using text or visual prompts such as points, boxes, and masks. Compared to its predecessor [SAM 2](https://github.com/facebookresearch/sam2), SAM 3 introduces the ability to exhaustively segment all instances of an open-vocabulary concept specified by a short text phrase or exemplars. Unlike prior work, SAM 3 can handle a vastly larger set of open-vocabulary prompts. It achieves 75-80% of human performance on our new [SA-CO benchmark](https://github.com/facebookresearch/sam3/edit/main_readme/README.md#sa-co-dataset) which contains 270K unique concepts, over 50 times more than existing benchmarks.
+![SAM 3 architecture](assets/model_diagram.png?raw=true) SAM 3 is a unified foundation model for promptable segmentation in images and videos. It can detect, segment, and track objects using text or visual prompts such as points, boxes, and masks. Compared to its predecessor [SAM 2](https://github.com/facebookresearch/sam2), SAM 3 introduces the ability to exhaustively segment all instances of an open-vocabulary concept specified by a short text phrase or exemplars. Unlike prior work, SAM 3 can handle a vastly larger set of open-vocabulary prompts. It achieves 75-80% of human performance on our new [SA-CO benchmark](https://github.com/facebookresearch/sam3?tab=readme-ov-file#sa-co-dataset) which contains 270K unique concepts, over 50 times more than existing benchmarks.
 
 This breakthrough is driven by an innovative data engine that has automatically annotated over 4 million unique concepts, creating the largest high-quality open-vocabulary segmentation dataset to date. In addition, SAM 3 introduces a new model architecture featuring a presence token that improves discrimination between closely related text prompts (e.g., “a player in white” vs. “a player in red”), as well as a decoupled detector–tracker design that minimizes task interference and scales efficiently with data.
 
@@ -183,7 +183,7 @@ jupyter notebook examples/sam3_image_predictor_example.ipynb
 
 ## Model
 
-SAM 3 consists of a detector and a tracker that share a vision encoder. The
+SAM 3 consists of a detector and a tracker that share a vision encoder. It has 848M parameters. The
 detector is a DETR-based model conditioned on text, geometry, and image
 exemplars. The tracker inherits the SAM 2 transformer encoder-decoder
 architecture, supporting video segmentation and interactive refinement.
@@ -269,8 +269,8 @@ architecture, supporting video segmentation and interactive refinement.
       <td style="text-align: center; border-right: 2px solid #ddd; padding: 10px 20px">54.1</td>
       <td style="text-align: center; padding: 10px 20px">40.6</td>
       <td style="text-align: center; border-right: 1px solid #eee; padding: 10px 20px">53.6</td>
-      <td style="text-align: center; padding: 10px 20px">56.5</td>
-      <td style="text-align: center; border-right: 1px solid #eee; padding: 10px 20px">57.2</td>
+      <td style="text-align: center; padding: 10px 20px">56.4</td>
+      <td style="text-align: center; border-right: 1px solid #eee; padding: 10px 20px">55.7</td>
       <td style="text-align: center; padding: 10px 20px">55.7</td>
     </tr>
   </tbody>
@@ -378,10 +378,18 @@ Nisha Deo, Peter Park, Phillip Thomas, Raghu Nayani, Rene Martinez Doehner, Robb
 Mitts, Shashank Jain, Spencer Whitehead, Ty Toledano, Valentin Gabeur, Vincent Cho, Vivian Lee, William Ngan,
 Xuehai He, Yael Yungster, Ziqi Pang, Ziyi Dou, Zoe Quake.
 
-<!-- ## Citing SAM 3
+## Citing SAM 3
 
 If you use SAM 3 or the SA-Co dataset in your research, please use the following BibTeX entry.
 
 ```bibtex
-TODO
-``` -->
+@misc{carion2025sam3segmentconcepts,
+      title={SAM 3: Segment Anything with Concepts},
+      author={Nicolas Carion and Laura Gustafson and Yuan-Ting Hu and Shoubhik Debnath and Ronghang Hu and Didac Suris and Chaitanya Ryali and Kalyan Vasudev Alwala and Haitham Khedr and Andrew Huang and Jie Lei and Tengyu Ma and Baishan Guo and Arpit Kalla and Markus Marks and Joseph Greer and Meng Wang and Peize Sun and Roman Rädle and Triantafyllos Afouras and Effrosyni Mavroudi and Katherine Xu and Tsung-Han Wu and Yu Zhou and Liliane Momeni and Rishi Hazra and Shuangrui Ding and Sagar Vaze and Francois Porcher and Feng Li and Siyuan Li and Aishwarya Kamath and Ho Kei Cheng and Piotr Dollár and Nikhila Ravi and Kate Saenko and Pengchuan Zhang and Christoph Feichtenhofer},
+      year={2025},
+      eprint={2511.16719},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2511.16719},
+}
+```
