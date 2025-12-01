@@ -563,6 +563,7 @@ def build_sam3_image_model(
     enable_segmentation=True,
     enable_inst_interactivity=False,
     compile=False,
+    token: Optional[str] = None,
 ):
     """
     Build SAM3 image model
@@ -626,7 +627,7 @@ def build_sam3_image_model(
         eval_mode,
     )
     if load_from_HF and checkpoint_path is None:
-        checkpoint_path = download_ckpt_from_hf()
+        checkpoint_path = download_ckpt_from_hf(token=token)
     # Load checkpoint if provided
     if checkpoint_path is not None:
         _load_checkpoint(model, checkpoint_path)
@@ -637,12 +638,12 @@ def build_sam3_image_model(
     return model
 
 
-def download_ckpt_from_hf():
+def download_ckpt_from_hf(token: Optional[str] = None):
     SAM3_MODEL_ID = "facebook/sam3"
     SAM3_CKPT_NAME = "sam3.pt"
     SAM3_CFG_NAME = "config.json"
-    _ = hf_hub_download(repo_id=SAM3_MODEL_ID, filename=SAM3_CFG_NAME)
-    checkpoint_path = hf_hub_download(repo_id=SAM3_MODEL_ID, filename=SAM3_CKPT_NAME)
+    _ = hf_hub_download(repo_id=SAM3_MODEL_ID, filename=SAM3_CFG_NAME, token=token)
+    checkpoint_path = hf_hub_download(repo_id=SAM3_MODEL_ID, filename=SAM3_CKPT_NAME, token=token)
     return checkpoint_path
 
 
