@@ -59,7 +59,7 @@ notebooks = [
     "ipycanvas",
     "ipympl",
     "pycocotools",
-    "decord",
+    "decord; sys_platform != 'darwin'",
     "opencv-python",
     "einops",
     "scikit-image",
